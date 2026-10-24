@@ -6,3 +6,22 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 @media(max-width:760px){#scene{position:absolute;top:0;height:570px;width:100%}.nav-item{font-size:9px;gap:3px;padding:10px 4px;min-width:0}.nav-item svg{width:13px;height:13px}.sidebar nav{gap:2px}}
 .f-pilot-link{display:flex;align-items:center;gap:10px;padding:13px 15px;margin-bottom:10px;background:#eef3ff!important;color:#3567d6}.f-pilot-mark{width:35px;height:35px;border-radius:9px;background:#dce7ff;display:grid;place-items:center;font-size:22px;font-weight:600}.f-pilot-link strong{font-size:12px}.f-pilot-link small{display:block;font-size:9px;margin-top:5px;color:#7186ac}.f-pilot-link>b{margin-left:auto}.f-indoor-action{display:block;background:#3265d8;color:white;text-decoration:none;padding:12px;margin:14px 0;border-radius:9px;font-size:12px;text-align:center}.f-search-link{display:block;text-decoration:none;color:#3265d8;font-size:12px}
+
+/* Simplified campus homepage: search first, floor controls inside buildings. */
+.floor-area,.nav-item[data-page="guide"],#guideCard{display:none!important}
+.sidebar-bottom .skyline,.sidebar-bottom h2,.sidebar-bottom p{display:none}
+.sidebar-bottom{padding-top:16px}
+.search-area{width:440px;max-width:100%}
+.search-form{border:1px solid #dce5f2;box-shadow:0 8px 28px #28497c12}
+.right-panel{gap:12px}
+.building-panel{border:1px solid #e3eaf2}
+.f-pilot-link{margin-bottom:0;text-decoration:none}
+@media(max-width:760px){
+ .sidebar{height:106px;padding-top:14px}
+ .sidebar nav{margin-top:12px;justify-content:flex-start;gap:8px}
+ .nav-item{font-size:11px;padding:10px 9px}
+ .search-area{width:100%}
+ .compass{top:138px}
+ .view-switch{top:-478px}
+ .right-panel{gap:10px}
+}
