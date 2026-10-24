@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f8ff"><meta name="description" content="F 栋楼层数字化试点：按实拍展示牌查询房间位置，核对原图，记录待确认事项。"><title>F 栋室内地图 · 寻课</title><link rel="stylesheet" href="f-building.css"></head>
+<body>
+<header class="mobile-head"><a href="./">← 校园</a><strong>寻课 / F 栋</strong><button data-open-review>参与核对</button></header>
+<aside class="rail">
+ <a href="./" class="brand"><span class="brand-mark">寻</span><span><b>寻课</b><small>CAMPUS, CONNECTED.</small></span></a>
+ <a href="./" class="back-link">← 返回校园地图</a>
+ <div class="building-heading"><span class="building-letter">F</span><div><h1>F 栋室内地图</h1><p>从一层楼，慢慢认识校园。</p></div></div>
+ <label class="search-box"><span>⌕</span><input id="room-search" type="search" aria-label="搜索房间或用途" placeholder="找房间，如 F-1021" autocomplete="off"><kbd>/</kbd></label>
+ <div class="scope-tabs" aria-label="房间查询范围"><button data-scope="floor" class="active">本层</button><button data-scope="all">全楼</button><button data-scope="saved">收藏</button></div>
+ <div class="list-header"><span id="list-caption">房间索引</span><span id="list-count"></span></div>
+ <div id="room-list" class="room-list" aria-live="polite"></div>
+ <div class="rail-foot"><span class="tiny-label">一起，把校园走明白。</span><button class="contribute" data-open-review>查看待核对事项 <span>↗</span></button><p>学生共建项目 · 非学校官网</p></div>
+</aside>
+<main>
+ <header class="workspace-head"><div><div class="eyebrow">CAMPUS ATLAS <span>/</span> BUILDING F</div><h2 id="floor-title">一层，找到你的目的地。</h2></div><div class="head-actions"><span class="status-dot">图面已录入 · 实地待核验</span><button id="source-top" class="light-button">原图资料 ↗</button></div></header>
+ <div class="floor-bar"><nav id="floor-nav" aria-label="切换楼层"></nav><div class="view-tabs"><button id="tilt-view" class="active" aria-pressed="true">3D 模型</button><button id="flat-view" aria-pressed="false">原图核对</button><button id="overview-view">全楼概览</button></div></div>
+ <div class="workspace-grid">
+  <section class="map-card" aria-label="楼层空间模型">
+   <div class="map-heading"><span><i class="blue-dot"></i> <b id="map-floor">1F</b> <span id="map-subtitle">公共服务 · 活动空间</span></span><button id="show-labels" class="map-chip" aria-pressed="true">位置点 开</button></div>
+   <div id="model-tools" class="model-tools"><div><button id="model-angle" class="active">立体</button><button id="model-top">俯视</button><button id="model-orbit" aria-label="旋转视角 45 度">旋转 ↻</button></div><label><input id="model-low" type="checkbox" checked>矮墙</label><label><input id="model-source" type="checkbox">原图叠加</label></div>
+   <div id="map-stage" class="map-stage"><div class="floor-watermark" id="watermark" aria-hidden="true">01</div><div id="model-host" class="model-host" hidden></div><div id="model-loading" class="model-loading">正在构建一层空间…</div><svg id="floor-map" role="img" aria-label="F 栋一层实拍平面图与房间位置" xmlns="http://www.w3.org/2000/svg"><title>F 栋楼层平面图</title></svg><span id="mode-tip" class="mode-tip" hidden></span></div>
+   <div class="map-bottom"><div class="legend"><span><i class="blue-dot"></i> 已读位置</span><span><i class="amber-dot"></i> 待核对</span><span><i class="green-dot"></i> 手动起点</span></div><div class="zoom-controls"><button id="zoom-out" aria-label="缩小地图">−</button><button id="zoom-reset" aria-label="适合窗口">适合窗口</button><button id="zoom-in" aria-label="放大地图">＋</button></div></div>
+   <p class="map-footnote" id="map-footnote">按展示牌描摹的 1F 三维剖切试点 · 墙高为示意，门洞及尺寸待实测。拖动旋转，滚轮或双指缩放。</p>
+  </section>
+  <aside class="detail-column">
+   <section class="place-card" aria-live="polite"><div class="card-eyebrow">YOUR NEXT STOP <button id="favorite-room" aria-label="收藏房间">☆</button></div><div id="room-detail"></div><div class="detail-actions"><button id="set-destination" class="primary-button">设为目的地 <span>↗</span></button><button id="room-source" class="light-button">核对照片</button></div></section>
+   <section class="journey-card"><div class="section-heading"><h3>位置对照</h3><span class="pill">手动定位</span></div><div class="journey-line"><i class="green-dot"></i><div><small>从</small><strong id="origin-label">还未设置起点</strong></div></div><div class="journey-line"><i class="blue-dot"></i><div><small>到</small><strong id="destination-label">还未选择目的地</strong></div></div><div class="position-buttons"><button id="pick-position">在图上标记我</button><button id="use-room">从所选房间出发</button></div><button id="clear-position" class="text-button" hidden>清除起终点</button><p id="route-status" class="route-status">核实走廊、门口与跨层连接后开放路线。当前仅对照位置，不生成引导线。</p></section>
+   <button class="review-card" data-open-review><span class="review-icon">?</span><div><b>让这张地图更准确</b><p>有疑点，就回到原图核对。</p></div><span>↗</span></button>
+   <p class="floor-note" id="floor-note"></p>
+  </aside>
+ </div>
+ <footer class="page-footer"><span id="coverage-summary">6 层 · 28 张原始照片</span><button id="data-info">数据范围与建模说明</button><span>不使用付费地图 API</span></footer>
+</main>
+<dialog id="modal"><div class="modal-top"><span id="modal-eyebrow">F BUILDING</span><button id="close-modal" aria-label="关闭弹窗">×</button></div><div id="modal-body"></div></dialog>
+<div id="notice" class="notice" role="status" hidden></div>
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js"}}</script>
+<script src="f-data.js"></script><script src="f-building.js"></script><script type="module" src="f-model.js"></script>
+</body></html>
